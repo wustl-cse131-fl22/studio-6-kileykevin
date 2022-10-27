@@ -12,28 +12,36 @@ public class RecursiveMethods {
 	 *         ...)
 	 */
 	public static double geometricSum(int n) {
-		
-			// FIXME compute the geometric sum for the first n terms recursively
+		if (n==0) {
 			return 0;
+		} else {
+			double num = Math.pow((1.0/2.0), n);
+			return num + geometricSum(n-1);
+		}
+//		double sum = 0;
+//		for (int i=0; i<n; i++) {
+//			double num = Math.pow((1/2), i);
+//			sum = num + geometricSum(n);
+//		}
+		// FIXME compute the geometric sum for the first n terms recursively
 		
+
 	}
 
 	/**
-	 * This method uses recursion to compute the greatest common divisor
-	 * for the two input values
+	 * This method uses recursion to compute the greatest common divisor for the two
+	 * input values
 	 * 
 	 * @param p first operand
 	 * @param q second operand
 	 * @return greatest common divisor of p and q
 	 */
 	public static int gcd(int p, int q) {
-		
-			// FIXME compute the gcd of p and q using recursion
-			return 0;
-		
-	}
 
-	
+		// FIXME compute the gcd of p and q using recursion
+		return 0;
+
+	}
 
 	/**
 	 * This method uses recursion to create a reverse of the given array
@@ -41,13 +49,28 @@ public class RecursiveMethods {
 	 * @param array the array to create a reverse of, not to be mutated
 	 * @return an array with the same data as the input but it reverse order
 	 */
-	public static int[] toReversed(int[] array) {
-		
-			// FIXME create a helper method that can recursively reverse the given array
-			return new int[0];
-		
+	public static int[] helper(int index, int[] reversedArray) {
+		if (index > reversedArray.length/2) {
+			return reversedArray;
+		}
+		int temp = reversedArray[index];
+		reversedArray[index] = reversedArray[reversedArray.length-index-1];
+		reversedArray[reversedArray.length-1-index] = temp;
+		return helper(index+1, reversedArray);
 	}
+	public static int[] toReversed(int[] array) {
+		int[] reversedArray = new int [array.length];
+		for (int i=0; i<array.length; i++) {
+			reversedArray[i] = array[i];
+		}
+		return helper(0, reversedArray); 
+		
+		
+		
+		// FIXME create a helper method that can recursively reverse the given array
 
+	}
+	
 	/**
 	 * @param xCenter                       x-coordinate of the center of the circle
 	 *                                      at the current depth
@@ -59,7 +82,7 @@ public class RecursiveMethods {
 	 */
 	public static void circlesUponCircles(double xCenter, double yCenter, double radius,
 			double radiusMinimumDrawingThreshold) {
-		
+
 		// FIXME
 	}
 
